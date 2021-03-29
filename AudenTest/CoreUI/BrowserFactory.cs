@@ -43,36 +43,36 @@ namespace AudenTest.CoreUI
 
         private static IWebDriver ChromeDriver()
         {
-            //var options = new ChromeOptions { PageLoadStrategy = PageLoadStrategy.Normal };
-            //options.AddUserProfilePreference("profile.managed_default_content_settings.notifications", 2);
-            //var chromeDriverService = ChromeDriverService.CreateDefaultService();
-            //options.AddArguments(new List<string> { "no-sandbox", "-incognito" });
-            //Driver = new ChromeDriver(chromeDriverService, options);
-            //return Driver;
-
             var options = new ChromeOptions { PageLoadStrategy = PageLoadStrategy.Normal };
             options.AddUserProfilePreference("profile.managed_default_content_settings.notifications", 2);
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
-            if (AppConfigManager.IsVM())
-            {
-                options.AddArguments(new List<string>() {
-                "--silent-launch",
-                "--no-startup-window",
-                "no-sandbox",
-                "headless",
-                "disable-gpu",
-                "-incognito",
-                "--window-size=1920x1080"
-                });
-                chromeDriverService.HideCommandPromptWindow = true;    // This is to hidden the console.
-            }
-            else
-            {
-                options.AddArguments(new List<string> { "no-sandbox", "-incognito" });
-            }
-
+            options.AddArguments(new List<string> { "no-sandbox", "-incognito" });
             Driver = new ChromeDriver(chromeDriverService, options);
-           return Driver;
+            return Driver;
+
+            //var options = new ChromeOptions { PageLoadStrategy = PageLoadStrategy.Normal };
+            //options.AddUserProfilePreference("profile.managed_default_content_settings.notifications", 2);
+            //var chromeDriverService = ChromeDriverService.CreateDefaultService();
+            //if (AppConfigManager.IsVM())
+            //{
+            //    options.AddArguments(new List<string>() {
+            //    "--silent-launch",
+            //    "--no-startup-window",
+            //    "no-sandbox",
+            //    "headless",
+            //    "disable-gpu",
+            //    "-incognito",
+            //    "--window-size=1920x1080"
+            //    });
+            //    chromeDriverService.HideCommandPromptWindow = true;    // This is to hidden the console.
+            //}
+            //else
+            //{
+            //    options.AddArguments(new List<string> { "no-sandbox", "-incognito" });
+            //}
+
+            //Driver = new ChromeDriver(chromeDriverService, options);
+            //return Driver;
         }
 
         //private static IWebDriver FireFoxDriver()

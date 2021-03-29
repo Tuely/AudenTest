@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AudenTest.CoreUI
 {
-   public class BasePage
+    public class BasePage
     {
         private IWebDriver _driver;
 
@@ -45,13 +45,9 @@ namespace AudenTest.CoreUI
 
         public static string BaseUrl { get; set; }
 
-        public static void NavigateToBase()
-        {
-            WebDriverSupport.SupportDriver().Navigate().GoToUrl(BaseUrl);
-        }
         public static void NavigateToUrl(string url)
         {
-           // Log.Info($"Navigating to url: {url}");
+            // Log.Info($"Navigating to url: {url}");
             WebDriverSupport.SupportDriver().Navigate().GoToUrl(url);
         }
         public string GetPageSource()

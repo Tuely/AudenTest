@@ -8,8 +8,8 @@ namespace AudenTest.CoreUI
     public class AppConfigManager
     {
         public static readonly IConfigurationRoot configuration = new ConfigurationBuilder()
-         .AddJsonFile("appsettings.json", true, true)
-                .Build();
+            .AddJsonFile("appsettings.json", true, true)
+                   .Build();
         private static TimeSpan _implicitTimeout;
         public static TimeSpan ImplicitTimeout => _implicitTimeout = _implicitTimeout =
             TimeSpan.FromSeconds(double.Parse(configuration["Browser:ImplicitTimeout"]));

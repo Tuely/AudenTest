@@ -1,5 +1,6 @@
 ﻿using AudenTest.Enums;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading;
 
 namespace AudenTest.CoreUI
 {
-   public class WebDriverSupport
+    public class WebDriverSupport
     {
         [ThreadStatic] private static IWebDriver _supportDriver;
         public static IWebDriver SupportDriver()
@@ -23,14 +24,14 @@ namespace AudenTest.CoreUI
         public static IWebDriver LaunchDriver()
         {
             _supportDriver = BrowserFactory.InitBrowser((BrowserType)Enum.Parse(typeof(BrowserType), AppConfigManager.Browser()));
-            
+
             return _supportDriver;
         }
 
         public static IWebDriver LaunchDriver(string browserType)
         {
             _supportDriver = BrowserFactory.InitBrowser((BrowserType)Enum.Parse(typeof(BrowserType), browserType));
-             return _supportDriver;
+            return _supportDriver;
         }
 
         public static void BrowserBack()
@@ -57,9 +58,23 @@ namespace AudenTest.CoreUI
             }
         }
 
-        public void SpecifiedPause(int milliSeconds)
+        public static void SpecifiedPause(int milliSeconds)
         {
             Thread.Sleep(milliSeconds);
         }
+
+        public static void SliderAmountClick(IWebElement slider, int x, int y)
+        {
+            SpecifiedPause(2000);
+            Actions move = new Actions(_supportDriver);
+            move.ClickAndHold(slider);
+            move.MoveToElement(slider, x, y);
+            //move.Build().Perform();
+            SpecifiedPause(2000);
+            slider.Click();
+            
+        }
+
+       
     }
 }
