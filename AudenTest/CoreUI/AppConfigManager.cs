@@ -18,10 +18,6 @@ namespace AudenTest.CoreUI
             return configuration["Client:BaseUrl"] ?? string.Empty;
         }
 
-        public static string HostBaseUrl()
-        {
-            return configuration["Client:HostBaseUrl"] ?? string.Empty;
-        }
         public static string Browser()
         {
             return configuration["Browser:BrowserType"] ?? string.Empty;
@@ -30,10 +26,6 @@ namespace AudenTest.CoreUI
         {
             return bool.TryParse(configuration["TestOptions:Reporting"], out var b) && b;
         }
-        public static bool IsVM()
-        {
-            return bool.TryParse(configuration["Browser:Headless"], out var b) && b;
-        }
-
+      
     }
 }

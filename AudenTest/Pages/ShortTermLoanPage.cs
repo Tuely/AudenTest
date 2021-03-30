@@ -18,7 +18,7 @@ namespace AudenTest.Pages
         [FindsBy(How = How.Id, Using = "consent_prompt_submit")]
         private IWebElement AcceptAllButton { get; set; }
         [FindsBy(How = How.XPath, Using = "//*[@class='date-selector__flex']//*[text()='3']")]
-        private IWebElement MonthSelection { get; set; }
+        private IWebElement RepaymentDaySelection { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//label[@for='range']")]
         private IWebElement AmountSlider { get; set; }
@@ -28,7 +28,7 @@ namespace AudenTest.Pages
             return _driverSupport.FindNewElement(By.XPath($"//*[@class='loan-amount__header__amount']/span[contains(text(), '{amount}')]")).WaitUntilDisplayed();
         }
 
-        [FindsBy(How = How.XPath, Using = "//*[@class='loan-summary__column__amount__value'][0]")]
+        [FindsBy(How = How.XPath, Using = "//*[@class='loan-summary__column__amount__value']//span")]
         private IWebElement LoanAmount { get; set; }
         public bool LoanAmountTest(string amount)
         {
@@ -41,9 +41,9 @@ namespace AudenTest.Pages
         {
             AcceptAllButton.ClickElement();
         }
-        public void SelectMonth()
+        public void SelectRepaymentDay(int day)
         {
-            MonthSelection.ClickElement();
+            RepaymentDaySelection.ClickElement();
         }
 
         public void ClickSliderAmount(int x, int y)
@@ -58,7 +58,21 @@ namespace AudenTest.Pages
 
         public void VerifyLoanAmount(string amount)
         {
-          //  Assert.IsTrue(LoanAmountTest(amount));
+            //  Assert.IsTrue(LoanAmountTest(amount));
+            // if (LoanAmount.GetAttribute("text()").Contains(amount))
+         
+            //    if (LoanAmount.Text.Contains(amount))
+            //{
+            //    Assert.True(LoanAmount.WaitUntilDisplayed(2), $"Selected Repaymnet day as {amount}");
+            //}
+        }
+
+        public void VerifySelectedDateSelection(int day)
+        {
+            if (RepaymentDaySelection.GetAttribute("disabled").Contains(""))
+            {
+                Assert.True(RepaymentDaySelection.WaitUntilDisplayed(2), $"Selected Repaymnet day as {day}");
+            }
         }
         #endregion
     }

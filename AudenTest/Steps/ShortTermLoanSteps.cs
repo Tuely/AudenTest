@@ -22,6 +22,12 @@ namespace AudenTest.Steps
             _page.ShortTermLoanPage().ClickAccept();
         }
 
+        [Given(@"I select repayment date as '(.*)'")]
+        public void GivenISelectRepaymentDateAs(int day)
+        {
+            _page.ShortTermLoanPage().SelectRepaymentDay(day);
+        }
+
         [When(@"I select the amount form the slider '(.*)' and '(.*)'")]
         public void WhenISelectTheAmountFormTheSliderAnd(int x, int y)
         {
@@ -38,6 +44,12 @@ namespace AudenTest.Steps
         public void ThenIVerifyTheLoanAmountAs(string amount)
         {
             _page.ShortTermLoanPage().VerifyLoanAmount(amount);
+        }
+        [Then(@"I verify the selected date '(.*)' is highlighted")]
+        public void ThenIVerifyTheSelectedDateIsHighlighted(int day)
+        {
+            _page.ShortTermLoanPage().VerifySelectedDateSelection(3);
+           
         }
 
 

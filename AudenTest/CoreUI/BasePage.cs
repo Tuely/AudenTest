@@ -37,7 +37,6 @@ namespace AudenTest.CoreUI
 
         public TPage As<TPage>() where TPage : BasePage, new()
         {
-
             return (TPage)this;
         }
 

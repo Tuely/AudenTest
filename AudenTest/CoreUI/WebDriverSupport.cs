@@ -69,9 +69,9 @@ namespace AudenTest.CoreUI
             Actions move = new Actions(_supportDriver);
             move.ClickAndHold(slider);
             move.MoveToElement(slider, x, y);
-            //move.Build().Perform();
-            SpecifiedPause(2000);
-            slider.Click();
+            move.Build().Perform();
+            //SpecifiedPause(2000);
+           // slider.Click();
             
         }
 

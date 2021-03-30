@@ -33,7 +33,7 @@ namespace AudenTest
               AppConfigManager appConfigManager,
     FeatureContext featureContext)
         {
-            _objectContainer = objectContainer;
+           _objectContainer = objectContainer;
             _scenarioContext = scenarioContext;
             _appConfigManager = appConfigManager;
             _featureContext = featureContext;
@@ -41,7 +41,7 @@ namespace AudenTest
         [BeforeScenario]
         public void BeforeScenario()
         {
-                      
+
             _currentDriver = WebDriverSupport.LaunchDriver($"{AppConfigManager.Browser()}");
             _objectContainer.RegisterInstanceAs<IWebDriver>(_currentDriver);
         }
@@ -49,10 +49,6 @@ namespace AudenTest
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            //CoreUtilities.ExecuteCommand("taskkill /im chromedriver.exe /f");
-            //Service.Instance.RegisterValueRetriever(new DateTimeParsingValueRetriever());
-            //Service.Instance.UnregisterValueRetriever(Service.Instance.ValueRetrievers.Single(x => x.GetType() == typeof(DateTimeValueRetriever)));
-
             if (AppConfigManager.Reporting())
             {
                 extent = Reporting.InitializeReport();
