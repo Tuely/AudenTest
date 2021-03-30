@@ -3,7 +3,7 @@
 Background:
 	Given I navigate into Auden
 
-@Regression
+@Regression smoke
 Scenario: Verify the Maximum amount from the slider
 When I select the amount form the slider '640' and '152' 
 Then I verify the selected amount as '£500'

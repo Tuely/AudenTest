@@ -18,15 +18,6 @@ namespace AudenTest.Extensions
             return WaitHandler(e, timeout, ElementOptions.Displayed);
         }
 
-        public static void EnterText(this IWebElement e, string text, bool clearPopulatedField = true)
-        {
-            WaitUntilDisplayed(e);
-            // Field has text and calling element intends to clear
-            if (clearPopulatedField && !e.IsEmpty()) e.Clear();
-            e.SendKeys(text);
-        }
-
-
         private enum ElementOptions
         {
             Displayed,
@@ -135,33 +126,7 @@ namespace AudenTest.Extensions
                 executor.ExecuteScript("arguments[0].click();", e);
             }
         }
-
-
-
-        public static void WaitForElement(this IWebElement e, IWebDriver driver)
-        {
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
-
-            bool WaitForElement(IWebDriver web) => e.Displayed;
-
-            wait.Until(WaitForElement);
-        }
-
-        public static void WaitUntilClickable(this IWebElement e)
-        {
-            var driver = WebDriverSupport.SupportDriver();
-            var isClickableWait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
-
-            isClickableWait.Until(ExpectedConditions.ElementToBeClickable(e));
-
-            e.Click();
-        }
-
-        public static bool IsEmpty(this IWebElement e)
-        {
-            return e.GetAttribute("value").Length == 0;
-        }
-
+                 
 
     }
 }

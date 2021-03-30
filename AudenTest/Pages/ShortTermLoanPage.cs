@@ -14,6 +14,7 @@ namespace AudenTest.Pages
     public class ShortTermLoanPage
     {
         protected WebDriverSupport _driverSupport = new WebDriverSupport();
+
         #region ShortTermLoanPage Elements
         [FindsBy(How = How.Id, Using = "consent_prompt_submit")]
         private IWebElement AcceptAllButton { get; set; }
@@ -58,13 +59,7 @@ namespace AudenTest.Pages
 
         public void VerifyLoanAmount(string amount)
         {
-            //  Assert.IsTrue(LoanAmountTest(amount));
-            // if (LoanAmount.GetAttribute("text()").Contains(amount))
-         
-            //    if (LoanAmount.Text.Contains(amount))
-            //{
-            //    Assert.True(LoanAmount.WaitUntilDisplayed(2), $"Selected Repaymnet day as {amount}");
-            //}
+           
         }
 
         public void VerifySelectedDateSelection(int day)
@@ -75,5 +70,6 @@ namespace AudenTest.Pages
             }
         }
         #endregion
+
     }
 }

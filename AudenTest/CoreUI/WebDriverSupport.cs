@@ -1,4 +1,5 @@
 ﻿using AudenTest.Enums;
+using AudenTest.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using System;
@@ -21,23 +22,12 @@ namespace AudenTest.CoreUI
             _supportDriver.Quit();
             _supportDriver.Close();
         }
-        public static IWebDriver LaunchDriver()
-        {
-            _supportDriver = BrowserFactory.InitBrowser((BrowserType)Enum.Parse(typeof(BrowserType), AppConfigManager.Browser()));
-
-            return _supportDriver;
-        }
-
         public static IWebDriver LaunchDriver(string browserType)
         {
             _supportDriver = BrowserFactory.InitBrowser((BrowserType)Enum.Parse(typeof(BrowserType), browserType));
             return _supportDriver;
         }
 
-        public static void BrowserBack()
-        {
-            _supportDriver.Navigate().Back();
-        }
         public IWebElement FindNewElement(By by, int timeout = 10)
         {
             _supportDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(timeout);
@@ -65,16 +55,15 @@ namespace AudenTest.CoreUI
 
         public static void SliderAmountClick(IWebElement slider, int x, int y)
         {
+            //slider.WaitUntilDisplayed(10);
             SpecifiedPause(2000);
             Actions move = new Actions(_supportDriver);
             move.ClickAndHold(slider);
             move.MoveToElement(slider, x, y);
             move.Build().Perform();
             //SpecifiedPause(2000);
-           // slider.Click();
-            
-        }
+            // slider.Click();
 
-       
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace AudenTest.Steps
         {
             _page = page;
         }
+        #region Given Scenarios
         [Given(@"I navigate into Auden")]
         public void GivenINavigateIntoAuden()
         {
@@ -27,12 +28,18 @@ namespace AudenTest.Steps
         {
             _page.ShortTermLoanPage().SelectRepaymentDay(day);
         }
+        #endregion
 
+        #region when scenarios
         [When(@"I select the amount form the slider '(.*)' and '(.*)'")]
         public void WhenISelectTheAmountFormTheSliderAnd(int x, int y)
         {
             _page.ShortTermLoanPage().ClickSliderAmount(x, y);
         }
+
+        #endregion
+
+        #region Then Scenarios
 
         [Then(@"I verify the selected amount as '(.*)'")]
         public void ThenIVerifyTheSelectedAmountAs(string amount)
@@ -49,10 +56,10 @@ namespace AudenTest.Steps
         public void ThenIVerifyTheSelectedDateIsHighlighted(int day)
         {
             _page.ShortTermLoanPage().VerifySelectedDateSelection(3);
-           
+
         }
 
-
+        #endregion
 
     }
 }

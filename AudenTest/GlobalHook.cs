@@ -41,7 +41,6 @@ namespace AudenTest
         [BeforeScenario]
         public void BeforeScenario()
         {
-
             _currentDriver = WebDriverSupport.LaunchDriver($"{AppConfigManager.Browser()}");
             _objectContainer.RegisterInstanceAs<IWebDriver>(_currentDriver);
         }

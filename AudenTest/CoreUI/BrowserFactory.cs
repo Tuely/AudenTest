@@ -44,15 +44,13 @@ namespace AudenTest.CoreUI
         private static IWebDriver ChromeDriver()
         {
             var options = new ChromeOptions { PageLoadStrategy = PageLoadStrategy.Normal };
-            options.AddUserProfilePreference("profile.managed_default_content_settings.notifications", 2);
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
             options.AddArguments(new List<string> { "no-sandbox", "-incognito" });
             Driver = new ChromeDriver(chromeDriverService, options);
             return Driver;
+        }
 
-                }
 
-       
         #endregion
 
     }

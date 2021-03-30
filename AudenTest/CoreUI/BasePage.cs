@@ -27,31 +27,10 @@ namespace AudenTest.CoreUI
             return pageInstance;
         }
 
-        public void Is<TPage>() where TPage : BasePage, new()
-        {
-            if (!(this is TPage))
-            {
-                throw new AssertionException(string.Format("Page Type Mismatch: Current page is not a '{0}'", typeof(TPage).Name));
-            }
-        }
-
-        public TPage As<TPage>() where TPage : BasePage, new()
-        {
-            return (TPage)this;
-        }
-
-        public string Title => _driver?.Title;
-
-        public static string BaseUrl { get; set; }
-
         public static void NavigateToUrl(string url)
         {
             // Log.Info($"Navigating to url: {url}");
             WebDriverSupport.SupportDriver().Navigate().GoToUrl(url);
-        }
-        public string GetPageSource()
-        {
-            return WebDriverSupport.SupportDriver().PageSource;
         }
 
     }
