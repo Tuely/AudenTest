@@ -17,8 +17,8 @@ namespace AudenTest.Reports
             string reportPath = LocalDirectory + "\\Auden  Automation Test Report " + datestamp + "\\testing.html";
             var htmlReporter = new ExtentHtmlReporter(reportPath);
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
-            htmlReporter.Config.ReportName = "CoverholderPortal Test Execution Report";
-            htmlReporter.Config.DocumentTitle = "Regression Result for Coverholder Portal";
+            htmlReporter.Config.ReportName = "Auden Test Execution Report";
+            htmlReporter.Config.DocumentTitle = "Regression Result";
             ExtentReports extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
             return extent;
@@ -26,7 +26,7 @@ namespace AudenTest.Reports
 
         public static void TearDownReport(ExtentReports extent)
         {
-           // extent.Flush();
+            extent.Flush();
         }
     }
 }
